@@ -4,11 +4,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite um número inteiro: ");
         int n1 = scanner.nextInt();
-        int i = 2;
-        while (i < n1) {
-            int teste = n1 % i;
-            if (teste < 1) {
-                System.out.println("O número não é primo! ");
+
+        for (int i = n1; i > 1; i--) {
+            int resto = n1 % 1;
+            if (resto > 0) {
+                System.out.println("O número não é primo");
                 break;
             }
             else {
@@ -16,5 +16,6 @@ public class Main {
                 break;
             }
         }
+
     }
 }
