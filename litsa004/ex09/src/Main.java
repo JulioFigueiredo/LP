@@ -2,50 +2,29 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        boolean jogarNovamente = true;
-        while (jogarNovamente) {
-            int i = 1;
-            boolean continuar = true;
-            while (i < 11 && continuar) {
-                System.out.println("Tabuada do " + i);
-                for (int j = 1; j < 11; j++) {
-                    System.out.print(i + " * " + j + " = ");
-                    int resp = scanner.nextInt();
-                    int result = i * j;
-                    boolean teste = result == resp;
-
-
-
-                    if (teste) {
-                        System.out.println("Parabéns");
-                    } else {
-                        System.out.println("Errado! A resposta correta é: " + result);
-                        System.out.println("Deseja jogar novamente? [s/n]");
-                        String jogar_dnv = scanner.next();
-                        if (jogar_dnv.equalsIgnoreCase("n")) {
-                            continuar = false;
-                            break;
-                        }
+        int resposta, op;
+        resposta = 0;
+        Scanner in = new Scanner(System.in);
+        do {
+            for (int i = 1; i <= 10; i++) {
+                int j;
+                for (j = 0; j <= 10; j++) {
+                    System.out.println(i + "x" + j + "=");
+                    resposta = in.nextInt();
+                    if (resposta != i * j) {
+                        System.out.println("Voce errou");
+                        break;
                     }
-
-                    if (i == 10 && j == 10) {
-                        System.out.println("Última pergunta! ");
-                        if (teste == true) {
-                            System.out.println("Parabéns, tudo certo! Deseja jogar novamente? [s/n]");
-                            String jogarNovamenteInput = scanner.next();
-                            if (jogarNovamenteInput.equalsIgnoreCase("s")) {
-                                jogarNovamente = false;
-                            }
-                        }
-
-                    }
-
                 }
-                i++;
-
-
-
+                System.out.println(i + " " + j);
+                if (resposta != i * (j - 1))
+                    break;
+                if (i == 10 && j == 10)
+                    System.out.println("Parabens voce ganhou!");
             }
-        }
-    } }
+            System.out.println("Deseja jogar novamente?\n1.Sim\n2.Nao");
+            op = in.nextInt();
+        } while (op == 1);
+        System.out.println("Obrigado por jogar.");
+    }
+}
